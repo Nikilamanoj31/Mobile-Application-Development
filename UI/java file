@@ -1,0 +1,71 @@
+package com.example.userinterface;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    EditText name,email,phone,pwd;
+    RadioGroup radgp;
+    RadioButton gender;
+    Button btn;
+
+    String nam,em,phn,pd;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.register_activity);
+
+        name=findViewById(R.id.name);
+        email=findViewById(R.id.email);
+        phone=findViewById(R.id.phone);
+        radgp=findViewById(R.id.rgp);
+        pwd=findViewById(R.id.pswd);
+        btn=findViewById(R.id.b1);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                nam=name.getText().toString().trim();
+                em=email.getText().toString().trim();
+                phn=phone.getText().toString().trim();
+                pd=pwd.getText().toString().trim();
+
+                if(nam.equals(""))
+                {
+                    Toast.makeText(MainActivity.this,"enter your name",Toast.LENGTH_SHORT).show();
+                }
+                else if(em.equals(""))
+                {
+                    Toast.makeText(MainActivity.this, "enter your email", Toast.LENGTH_SHORT).show();
+                }
+                else if(phn.equals("")){
+                    Toast.makeText(MainActivity.this, "enter your phone number", Toast.LENGTH_SHORT).show();
+                }
+                else if (radgp.getCheckedRadioButtonId()==-1)
+                {
+                    Toast.makeText(MainActivity.this, "Select your gender", Toast.LENGTH_SHORT).show();
+                }
+                else if(pd.equals(""))
+                {
+                    Toast.makeText(MainActivity.this, "enter your password", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
+    }
+}
